@@ -171,10 +171,11 @@ export function Portfolio() {
             aria-label="About Asad"
           >
             <Image
-              src="/assets/asad-jaffery-profile.jpeg"
+              src="/assets/asad-jaffery-avatar.jpeg"
               alt=""
               width={34}
               height={34}
+              quality={90}
             />
           </button>
         </div>
@@ -290,10 +291,11 @@ export function Portfolio() {
         <section className="channel-info" aria-label="Channel information">
           <div className="avatar channel-avatar">
             <Image
-              src="/assets/asad-jaffery-profile.jpeg"
+              src="/assets/asad-jaffery-avatar.jpeg"
               alt="Asad Jaffery"
               width={138}
               height={138}
+              quality={90}
               priority
             />
           </div>
@@ -320,8 +322,7 @@ export function Portfolio() {
               type="button"
               onClick={() => setActiveSection("about")}
             >
-              Building with data. Learning by doing. Here&apos;s the work behind
-              the résumé.{" "}
+              A curious individual whos into tech.{" "}
               <svg>
                 <use href="#chevron" />
               </svg>
@@ -406,7 +407,55 @@ export function Portfolio() {
                 <div className="section-heading">
                   <h2 id="about-title">About</h2>
                 </div>
-                <div className="about-bio" aria-label="Bio" />
+                <div className="about-bio" aria-label="Bio">
+                  <p>
+                    I’m an ambitious and hungry individual who’s interested in
+                    software and data engineering. I enjoy taking on challenging
+                    problems, learning through the process, and building simple,
+                    elegant solutions to complex systems. My goal is to build
+                    software that brings value, and does good for the world!
+                  </p>
+                </div>
+                <div className="about-section">
+                  <h3>Education</h3>
+                  <p>B.S. Informatics, Concentration in Data Science</p>
+                  <p>University of Washington · June 2026</p>
+                </div>
+                <div className="about-section">
+                  <h3>Links</h3>
+                  <div className="about-links">
+                    <a
+                      href="https://github.com/Asad-Jaffery"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <svg>
+                        <use href="#github" />
+                      </svg>
+                      GitHub
+                      <svg>
+                        <use href="#external" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/asad-jaffery/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        style={{ fill: "currentColor", stroke: "none" }}
+                      >
+                        <path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96C2 21.32 2.69 22 3.55 22h16.9c.86 0 1.55-.68 1.55-1.52V3.52C22 2.68 21.31 2 20.45 2ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.3h.04c.4-.75 1.36-1.55 2.8-1.55 3 0 3.57 1.98 3.57 4.55v5.25Z" />
+                      </svg>
+                      LinkedIn
+                      <svg>
+                        <use href="#external" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </section>
             ) : (
               <>
