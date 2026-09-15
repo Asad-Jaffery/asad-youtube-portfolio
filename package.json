@@ -1,0 +1,7 @@
+{
+  "name": "asad-youtube-portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A local YouTube-inspired portfolio for Asad Jaffery",
+  "scripts": { "dev": "node server.mjs", "check": "node --check dist/app.js" }
+}
