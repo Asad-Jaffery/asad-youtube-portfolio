@@ -1,0 +1,70 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+.track {
+  min-width: 0;
+}
+.art {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+}
+.art img {
+  object-fit: cover;
+  transition: transform 160ms;
+}
+.track:hover .art img {
+  transform: scale(1.03);
+}
+.rank {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: #000d;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 12px;
+}
+.track h3 {
+  font-size: 14px;
+  margin: 12px 0 4px;
+  line-height: 1.4;
+}
+.track p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+}
+.spotify {
+  display: block;
+  color: #1ed760;
+  font-size: 11px;
+  margin-top: 8px;
+}
+.status {
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--muted);
+}
+.status p {
+  margin-top: 0;
+}
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 14px;
+  }
+}
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
