@@ -2,41 +2,45 @@
 .status {
   position: relative;
   width: 100%;
-  height: clamp(150px, 16vw, 210px);
+  height: clamp(160px, 17vw, 220px);
   overflow: hidden;
   border-radius: 14px;
   background: #181314;
 }
 .graph {
   isolation: isolate;
-  background: linear-gradient(110deg, #191719, #251316 60%, #36131b);
+  background: linear-gradient(110deg, #151917, #13251a 60%, #13361f);
 }
 .art {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   opacity: 0.8;
-  padding: 10px;
+  padding: clamp(12px, 1.5vw, 24px);
+  padding-bottom: 38px;
   mask-image: linear-gradient(to bottom, #000 50%, #0009 78%, transparent);
 }
 .grid {
   display: flex;
-  flex: 1 0 900px;
-  gap: 5px;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+  gap: clamp(2px, 0.35vw, 5px);
 }
 .week {
   display: flex;
   flex: 1;
+  min-width: 0;
   flex-direction: column;
-  gap: 5px;
+  gap: clamp(2px, 0.35vw, 5px);
 }
 .day {
   display: block;
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 3px;
+  border-radius: clamp(1px, 0.2vw, 3px);
   opacity: 0;
   transition: transform 100ms;
 }
@@ -51,19 +55,19 @@
   transform: scale(1.1);
 }
 .level0 {
-  background: #302326;
+  background: #202922;
 }
 .level1 {
-  background: #59222c;
+  background: #0e4429;
 }
 .level2 {
-  background: #8b293c;
+  background: #006d32;
 }
 .level3 {
-  background: #cc3653;
+  background: #26a641;
 }
 .level4 {
-  background: #ff5a79;
+  background: #39d353;
 }
 .caption {
   position: absolute;
@@ -75,15 +79,15 @@
   pointer-events: none;
 }
 .label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #ded0d3;
+  color: #d0ded4;
 }
 .total {
-  font-size: 11px;
-  color: #b9a7ab;
+  font-size: 12px;
+  color: #a7b9ad;
 }
 .total strong {
   font-weight: 600;
@@ -108,7 +112,7 @@
   height: 65px;
   background: repeating-linear-gradient(
     90deg,
-    #59222c 0 12px,
+    #0e4429 0 12px,
     transparent 12px 17px
   );
   opacity: 0.3;
