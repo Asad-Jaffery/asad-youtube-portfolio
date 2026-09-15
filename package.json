@@ -3,5 +3,32 @@
   "private": true,
   "version": "0.1.0",
   "description": "A local YouTube-inspired portfolio for Asad Jaffery",
-  "scripts": { "dev": "node server.mjs", "check": "node --check dist/app.js" }
+  "scripts": {
+    "dev": "next dev --port 3100",
+    "build": "next build",
+    "start": "next start --port 3100",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "npm run lint && npm run typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "spotify:token": "node scripts/spotify-token.mjs"
+  },
+  "dependencies": {
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.5",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  }
 }
