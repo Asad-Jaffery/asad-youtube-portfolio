@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useRef, useState } from "react";
-import { highlights, type Highlight } from "@/data/highlights";
+import Image from 'next/image';
+import { useRef, useState } from 'react';
+import { highlights, type Highlight } from '@/data/highlights';
 
 export function Highlights() {
   const [activeHighlight, setActiveHighlight] = useState<Highlight | null>(
@@ -19,99 +19,99 @@ export function Highlights() {
   function scrollHighlights(direction: -1 | 1) {
     listRef.current?.scrollBy({
       left: direction * listRef.current.clientWidth * 0.8,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 
   return (
-    <section aria-labelledby="highlights-title">
-      <div className="section-heading highlights-heading">
-        <h2 id="highlights-title">Highlights</h2>
-        <span>A few moments worth sharing</span>
+    <section aria-labelledby='highlights-title'>
+      <div className='section-heading highlights-heading'>
+        <h2 id='highlights-title'>Highlights</h2>
+        <span>Some moments worth sharing</span>
         <div
-          className="highlight-scroll-controls"
-          aria-label="Highlight carousel controls"
+          className='highlight-scroll-controls'
+          aria-label='Highlight carousel controls'
         >
           <button
-            className="highlight-scroll-previous"
-            type="button"
+            className='highlight-scroll-previous'
+            type='button'
             onClick={() => scrollHighlights(-1)}
-            aria-label="Scroll highlights left"
+            aria-label='Scroll highlights left'
           >
             <svg>
-              <use href="#arrow" />
+              <use href='#arrow' />
             </svg>
           </button>
           <button
-            type="button"
+            type='button'
             onClick={() => scrollHighlights(1)}
-            aria-label="Scroll highlights right"
+            aria-label='Scroll highlights right'
           >
             <svg>
-              <use href="#arrow" />
+              <use href='#arrow' />
             </svg>
           </button>
         </div>
       </div>
-      <div className="highlight-scroll" ref={listRef}>
+      <div className='highlight-scroll' ref={listRef}>
         {highlights.map((highlight) => {
           const thumbnail = (
             <>
               <Image
-                className="photo"
+                className='photo'
                 src={highlight.image}
                 alt={highlight.imageAlt}
                 fill
-                sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw"
+                sizes='(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw'
               />
-              <span className="duration">{highlight.badge}</span>
+              <span className='duration'>{highlight.badge}</span>
             </>
           );
 
           return (
-            <article className="video-card" key={highlight.id}>
+            <article className='video-card' key={highlight.id}>
               {highlight.url ? (
                 <a
-                  className="thumbnail recognize"
+                  className='thumbnail recognize'
                   href={highlight.url}
-                  target="_blank"
-                  rel="noreferrer"
+                  target='_blank'
+                  rel='noreferrer'
                   aria-label={`Read ${highlight.title}`}
                 >
                   {thumbnail}
                 </a>
               ) : (
                 <button
-                  className="thumbnail recognize"
-                  type="button"
+                  className='thumbnail recognize'
+                  type='button'
                   onClick={() => openHighlight(highlight)}
                   aria-label={`View details about ${highlight.title}`}
                 >
                   {thumbnail}
                 </button>
               )}
-              <div className="video-info">
+              <div className='video-info'>
                 <Image
-                  className="company-avatar"
+                  className='company-avatar'
                   src={highlight.logo}
-                  alt=""
+                  alt=''
                   width={34}
                   height={34}
                 />
                 <div>
                   {highlight.url ? (
                     <a
-                      className="video-title"
+                      className='video-title'
                       href={highlight.url}
-                      target="_blank"
-                      rel="noreferrer"
+                      target='_blank'
+                      rel='noreferrer'
                     >
                       {highlight.title}
                     </a>
                   ) : (
                     <button
-                      className="video-title"
-                      type="button"
+                      className='video-title'
+                      type='button'
                       onClick={() => openHighlight(highlight)}
                     >
                       {highlight.title}
@@ -131,31 +131,31 @@ export function Highlights() {
       </div>
       <dialog
         ref={dialogRef}
-        aria-labelledby="highlight-dialog-title"
+        aria-labelledby='highlight-dialog-title'
         onClose={() => setActiveHighlight(null)}
         onClick={(event) => {
           if (event.target === event.currentTarget) dialogRef.current?.close();
         }}
       >
         {activeHighlight && (
-          <div className="project-detail">
+          <div className='project-detail'>
             <p>
               {activeHighlight.publisher} · {activeHighlight.date}
             </p>
-            <h2 id="highlight-dialog-title">{activeHighlight.title}</h2>
+            <h2 id='highlight-dialog-title'>{activeHighlight.title}</h2>
             {activeHighlight.description && (
               <p>{activeHighlight.description}</p>
             )}
           </div>
         )}
         <button
-          className="icon-button dialog-close"
-          type="button"
+          className='icon-button dialog-close'
+          type='button'
           onClick={() => dialogRef.current?.close()}
-          aria-label="Close highlight"
+          aria-label='Close highlight'
         >
           <svg>
-            <use href="#close" />
+            <use href='#close' />
           </svg>
         </button>
       </dialog>
