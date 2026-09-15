@@ -44,7 +44,7 @@ export function ProjectCard({
       <div className="video-info">
         <Image
           className="company-avatar"
-          src={project.logo}
+          src={project.avatarLogo ?? project.logo}
           alt=""
           width={34}
           height={34}

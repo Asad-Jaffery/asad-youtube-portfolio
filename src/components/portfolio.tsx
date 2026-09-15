@@ -11,7 +11,7 @@ import { Highlights } from "./highlights";
 
 export function Portfolio() {
   const [activeSection, setActiveSection] = useState<
-    "career" | "highlights" | "music"
+    "career" | "highlights" | "about" | "music"
   >("career");
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -166,10 +166,16 @@ export function Portfolio() {
           <button
             className="avatar small"
             data-view="about"
-            aria-disabled="true"
+            type="button"
+            onClick={() => setActiveSection("about")}
             aria-label="About Asad"
           >
-            A
+            <Image
+              src="/assets/asad-jaffery-profile.jpeg"
+              alt=""
+              width={34}
+              height={34}
+            />
           </button>
         </div>
       </header>
@@ -204,9 +210,9 @@ export function Portfolio() {
             <span>Highlights</span>
           </button>
           <button
-            className="side-item"
+            className={`side-item ${activeSection === "about" ? "active" : ""}`}
             type="button"
-            aria-disabled="true"
+            onClick={() => setActiveSection("about")}
             aria-label="About"
           >
             <svg>
@@ -244,7 +250,12 @@ export function Portfolio() {
             data-company="Tesla"
             aria-disabled="true"
           >
-            <Image src="/assets/tesla.png" alt="" width={22} height={22} />
+            <Image
+              src="/assets/tesla-channel.png"
+              alt=""
+              width={22}
+              height={22}
+            />
             <span>Tesla</span>
           </button>
           <button
@@ -278,7 +289,13 @@ export function Portfolio() {
         </section>
         <section className="channel-info" aria-label="Channel information">
           <div className="avatar channel-avatar">
-            A<span>J</span>
+            <Image
+              src="/assets/asad-jaffery-profile.jpeg"
+              alt="Asad Jaffery"
+              width={138}
+              height={138}
+              priority
+            />
           </div>
           <div className="channel-description">
             <h1>
@@ -296,9 +313,13 @@ export function Portfolio() {
             <p className="channel-meta">
               <strong>@asadjaffery</strong>
               <span>3 companies</span>
-              <span>4 stories and counting</span>
             </p>
-            <button className="bio-link" data-view="about" aria-disabled="true">
+            <button
+              className="bio-link"
+              data-view="about"
+              type="button"
+              onClick={() => setActiveSection("about")}
+            >
               Building with data. Learning by doing. Here&apos;s the work behind
               the résumé.{" "}
               <svg>
@@ -352,7 +373,12 @@ export function Portfolio() {
           >
             Highlights
           </button>
-          <button type="button" aria-disabled="true">
+          <button
+            className={activeSection === "about" ? "selected" : ""}
+            type="button"
+            onClick={() => setActiveSection("about")}
+            aria-pressed={activeSection === "about"}
+          >
             About
           </button>
           <button
@@ -370,29 +396,38 @@ export function Portfolio() {
           id="content"
           aria-labelledby={`${activeSection}-title`}
         >
-          {activeSection === "music" ? (
-            <Music />
-          ) : activeSection === "highlights" ? (
-            <Highlights />
-          ) : (
-            <>
-              <div className="section-heading">
-                <h2 id="career-title">Career</h2>
-                <span>The teams I’ve been part of</span>
-              </div>
-              <div className="video-grid">
-                {projects
-                  .filter((project) => project.kind === "career")
-                  .map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      project={project}
-                      onOpen={() => openProject(project)}
-                    />
-                  ))}
-              </div>
-            </>
-          )}
+          <div className="section-transition" key={activeSection}>
+            {activeSection === "music" ? (
+              <Music />
+            ) : activeSection === "highlights" ? (
+              <Highlights />
+            ) : activeSection === "about" ? (
+              <section aria-labelledby="about-title">
+                <div className="section-heading">
+                  <h2 id="about-title">About</h2>
+                </div>
+                <div className="about-bio" aria-label="Bio" />
+              </section>
+            ) : (
+              <>
+                <div className="section-heading">
+                  <h2 id="career-title">Career</h2>
+                  <span>The teams I’ve been part of</span>
+                </div>
+                <div className="video-grid">
+                  {projects
+                    .filter((project) => project.kind === "career")
+                    .map((project) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                        onOpen={() => openProject(project)}
+                      />
+                    ))}
+                </div>
+              </>
+            )}
+          </div>
         </section>
 
         <footer className="content-footer">
@@ -415,6 +450,13 @@ export function Portfolio() {
             <h2 id="dialog-title">{activeProject.title}</h2>
             {activeProject.team && <p>{activeProject.team}</p>}
             <p>{activeProject.category}</p>
+            {activeProject.details && (
+              <ul className="project-highlights">
+                {activeProject.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
         <button
