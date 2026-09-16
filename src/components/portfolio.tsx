@@ -324,7 +324,7 @@ export function Portfolio() {
               target='_blank'
               rel='noreferrer'
             >
-              github.com/Asad-Jaffery <span>and 1 more link</span>
+              github.com/Asad-Jaffery
             </a>
             <div className='channel-actions'>
               <a

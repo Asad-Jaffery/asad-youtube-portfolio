@@ -335,10 +335,6 @@ main {
   font-size: 13px;
   margin: 7px 0 13px;
 }
-.channel-link span {
-  color: var(--muted);
-  margin-left: 5px;
-}
 .channel-actions {
   display: flex;
   gap: 10px;
@@ -875,9 +871,6 @@ dialog::backdrop {
   }
   .bio-link {
     line-height: 1.5;
-  }
-  .channel-link span {
-    display: none;
   }
   .channel-tabs {
     gap: 24px;
