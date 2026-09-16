@@ -59,9 +59,6 @@ export function Portfolio() {
             <rect x="3" y="6" width="18" height="15" rx="2" />
             <path d="M6 3h12m-8 7 6 4-6 4Z" />
           </symbol>
-          <symbol id="list" viewBox="0 0 24 24">
-            <path d="M3 5h14M3 10h14M3 15h8m3-2 7 4-7 4Z" />
-          </symbol>
           <symbol id="arrow" viewBox="0 0 24 24">
             <path d="M5 12h14m-6-6 6 6-6 6" />
           </symbol>
@@ -86,10 +83,6 @@ export function Portfolio() {
           </symbol>
           <symbol id="chevron" viewBox="0 0 24 24">
             <path d="m9 5 7 7-7 7" />
-          </symbol>
-          <symbol id="mail" viewBox="0 0 24 24">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <path d="m3 6 9 7 9-7" />
           </symbol>
         </defs>
       </svg>
@@ -121,7 +114,6 @@ export function Portfolio() {
         </div>
         <div className="search">
           <input
-            id="search-input"
             type="search"
             placeholder="Search this channel"
             aria-label="Search this channel"
@@ -165,7 +157,6 @@ export function Portfolio() {
           </a>
           <button
             className="avatar small"
-            data-view="about"
             type="button"
             onClick={() => setActiveSection("about")}
             aria-label="About Asad"
@@ -318,7 +309,6 @@ export function Portfolio() {
             </p>
             <button
               className="bio-link"
-              data-view="about"
               type="button"
               onClick={() => setActiveSection("about")}
             >
@@ -344,11 +334,7 @@ export function Portfolio() {
               >
                 Let&apos;s connect
               </a>
-              <button
-                className="pill-button"
-                id="share-channel"
-                onClick={shareChannel}
-              >
+              <button className="pill-button" onClick={shareChannel}>
                 <svg>
                   <use href="#share" />
                 </svg>
@@ -392,11 +378,7 @@ export function Portfolio() {
           </button>
         </nav>
 
-        <section
-          className="content"
-          id="content"
-          aria-labelledby={`${activeSection}-title`}
-        >
+        <section className="content" aria-labelledby={`${activeSection}-title`}>
           <div className="section-transition" key={activeSection}>
             {activeSection === "music" ? (
               <Music />
@@ -464,15 +446,13 @@ export function Portfolio() {
                   <span>The teams I’ve been part of</span>
                 </div>
                 <div className="video-grid">
-                  {projects
-                    .filter((project) => project.kind === "career")
-                    .map((project) => (
-                      <ProjectCard
-                        key={project.id}
-                        project={project}
-                        onOpen={() => openProject(project)}
-                      />
-                    ))}
+                  {projects.map((project) => (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      onOpen={() => openProject(project)}
+                    />
+                  ))}
                 </div>
               </>
             )}
@@ -497,15 +477,13 @@ export function Portfolio() {
               {activeProject.company} · {activeProject.period}
             </p>
             <h2 id="dialog-title">{activeProject.title}</h2>
-            {activeProject.team && <p>{activeProject.team}</p>}
+            <p>{activeProject.team}</p>
             <p>{activeProject.category}</p>
-            {activeProject.details && (
-              <ul className="project-highlights">
-                {activeProject.details.map((detail) => (
-                  <li key={detail}>{detail}</li>
-                ))}
-              </ul>
-            )}
+            <ul className="project-highlights">
+              {activeProject.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
           </div>
         )}
         <button

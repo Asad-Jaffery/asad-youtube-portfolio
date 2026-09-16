@@ -15,30 +15,14 @@ export function ProjectCard({
         onClick={onOpen}
         aria-label={`View ${project.company}: ${project.title}`}
       >
-        {project.photo ? (
-          <>
-            <Image
-              className="photo"
-              src={project.photo}
-              alt="Asad and the Recognize capstone team"
-              fill
-              sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 33vw"
-            />
-          </>
-        ) : (
-          <>
-            {project.kind === "career" && (
-              <Image
-                className="company-watermark"
-                src={project.logo}
-                alt=""
-                width={160}
-                height={160}
-              />
-            )}
-            <span className="thumb-kicker">{project.kicker}</span>
-          </>
-        )}
+        <Image
+          className="company-watermark"
+          src={project.logo}
+          alt=""
+          width={160}
+          height={160}
+        />
+        <span className="thumb-kicker">{project.kicker}</span>
         <span className="duration">{project.duration}</span>
       </button>
       <div className="video-info">
@@ -57,7 +41,7 @@ export function ProjectCard({
           >
             {project.title}
           </button>
-          <p>{project.team ?? project.company}</p>
+          <p>{project.team}</p>
           <p>{project.period}</p>
         </div>
       </div>
